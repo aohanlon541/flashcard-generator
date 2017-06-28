@@ -1,16 +1,28 @@
-var ClozeCard = function(text, cloze) {
-    this.cloze = cloze;
-    this.partial = partial;
+var ClozeCard = function(fullText, cloze) {
     this.fullText = fullText;
+    this.cloze = cloze;
+    this.partial = function() {
+        var clozeSplit = this.cloze.split(" ");
+        var numOfWord = clozeSplit.length;
+        var fullTextSplit = this.fullText.split(" ");
+    
+        for (i = 0; i < clozeSplit.length; i++) {
+            var findCloze = fullTextSplit.indexOf(clozeSplit[i]);
+            var addDots = fullTextSplit.splice(findCloze, 1, "...");
+            var stringTogether = fullTextSplit.join(' ');
+
+            console.log(stringTogether);
+        }
+        
+    };
 }
 
-module.exports = ClozeCard;
+var exampleCard = new ClozeCard("George Washington was the first president of the USA", "George Washington");
+if (process.argv[2] === "test") {
+    exampleCard.partial();
+}
+// module.exports = ClozeCard;
 
 
-var clozeSplit = cloze.split(" ");
-var numOfWord = clozeSplit.length;
 
-var textSplit = text.split(" ");
-var indexOfCloze = textSplit(clozeSplit)
 
-var partial = textSplit.splice
