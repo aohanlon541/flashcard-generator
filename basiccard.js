@@ -8,9 +8,23 @@ var BasicCard = function(front, back) {
 }
 
 var cardArr = [];
+var card;
+var num;
+
+var getNumberOfCards = function(answer) {
+    inquirer.prompt([
+        {
+            name: "num",
+            message: "How many cards would you like to make? "
+        }
+        ]).then(function(answer) {
+            num = answer.num;
+            createCard()
+        });
+};
 
 var createCard = function(answer) {
-    if (cardArr.length < 1) {
+    if (cardArr.length < num) {
         console.log("\nNEW CARD\n");
         inquirer.prompt([
         {
@@ -21,20 +35,25 @@ var createCard = function(answer) {
            message: "Back of Card: " 
         }  
         ]).then(function(answers) {
-            var card = new BasicCard(answers.front, answers.back);
+            card = new BasicCard(answers.front, answers.back);
             cardArr.push(card);
             createCard();
         }); 
     }
-    else { 
-        if (process.argv[2] === "front") {
-            console.log(card.front);
+    else {
+        for (i = 0; i < cardArr.length; i++) {
+            function showCard() { 
+                console.log(cardArr[i].front);
+                // setTimeout((console.log(cardArr[i].back)), 3000);
+            }.then(function showBack(backOfCard) {
+                console.log(backOfCard);
+            }) 
         }
-        if (process.argv[2] === "back") {
-            console.log(card.back);
-        }
-    }    
+        showCard();
+    }   
 };
-createCard();
+getNumberOfCards();
+
+
 
 module.exports = BasicCard;
