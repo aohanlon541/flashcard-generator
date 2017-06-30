@@ -61,7 +61,7 @@ var createCard = function(answer) {
     }
     else {
         for (i = 0; i < cardArr.length; i++) {
-            console.log(cardArr[i].partial);
+            console.log(cardArr[i].partial());
         } 
     }   
 };
