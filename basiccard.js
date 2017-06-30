@@ -42,14 +42,9 @@ var createCard = function(answer) {
     }
     else {
         for (i = 0; i < cardArr.length; i++) {
-            function showCard() { 
-                console.log(cardArr[i].front);
-                // setTimeout((console.log(cardArr[i].back)), 3000);
-            }.then(function showBack(backOfCard) {
-                console.log(backOfCard);
-            }) 
-        }
-        showCard();
+            console.log(cardArr[i].front);
+            console.log(cardArr[i].back);
+        } 
     }   
 };
 getNumberOfCards();
