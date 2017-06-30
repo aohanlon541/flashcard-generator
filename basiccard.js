@@ -47,7 +47,6 @@ var createCard = function(answer) {
         } 
     }   
 };
-getNumberOfCards();
 
 
 

@@ -30,7 +30,7 @@ var cardArr = [];
 var card;
 var num;
 
-var getNumberOfCards = function(answer) {
+var getNumberOfCardsCloze = function(answer) {
     inquirer.prompt([
         {
             name: "num",
@@ -65,7 +65,6 @@ var createCard = function(answer) {
         } 
     }   
 };
-getNumberOfCards();
 
 module.exports = ClozeCard;
 

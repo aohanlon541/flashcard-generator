@@ -1,10 +1,24 @@
 var Basic = require("./basiccard.js");
 var Cloze = require("./clozecard.js");
 
-var htmlCard = new Basic("What is HTML?", "HyperText Markup Language");
-var cssCard = new Cloze("CSS means Cascading Style Sheet", "Style");
+var inquirer = require("inquirer");
 
+var getTypeOfCard = function(answer) {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: "type",
+            message: "What type of card would you like to make?",
+            choices: ["Basic (front and back)", "Cloze (phrase completion)"]
+        }
+        ]).then(function(answer) {
+            if (answer.list === "Basic (front and back)") {
+                getNumberOfCards();
+            }
+            else {
+                getNumberOfCardsCloze();
+            }
+        });
+};
 
-if (process.argv[2] === "create-basic-card") {
-    
-}
+getTypeOfCard();
