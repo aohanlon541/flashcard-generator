@@ -1,5 +1,7 @@
+var fs = require('fs');  
 var Basic = require("./basiccard.js");
 var Cloze = require("./clozecard.js");
+
 
 var inquirer = require("inquirer");
 
@@ -13,10 +15,10 @@ var getTypeOfCard = function(answer) {
         }
         ]).then(function(answer) {
             if (answer.list === "Basic (front and back)") {
-                getNumberOfCards();
+                Basic.getNumberOfCards();
             }
             else {
-                getNumberOfCardsCloze();
+                Cloze.getNumberOfCards();
             }
         });
 };
